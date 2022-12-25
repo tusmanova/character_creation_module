@@ -1,4 +1,5 @@
 from random import randint
+from typing import Union
 
 
 def attack(char_name: str, char_class: str) -> str:
@@ -55,7 +56,7 @@ def start_training(char_name: str, char_class: str) -> str:
           'defence — чтобы блокировать атаку противника '
           'или special — чтобы использовать свою суперсилу.')
     print('Если не хочешь тренироваться, введи команду skip.')
-    cmd: str = None
+    cmd: Union[str, None] = None
     while cmd != 'skip':
         cmd = input('Введи команду: ')
         if cmd == 'attack':
@@ -67,9 +68,9 @@ def start_training(char_name: str, char_class: str) -> str:
     return 'Тренировка окончена.'
 
 
-def choice_char_class() -> str:
-    approve_choice: str = None
-    char_class: str = None
+def choice_char_class() -> Union[str, None]:
+    approve_choice: Union[str, None] = None
+    char_class: Union[str, None] = None
     while approve_choice != 'y':
         char_class = input('Введи название персонажа, '
                            'за которого хочешь играть: Воитель — warrior, '
