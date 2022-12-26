@@ -4,16 +4,15 @@ from typing import Union
 
 def attack(char_name: str, char_class: Union[str, None]) -> str:
     """Calculate the damage dealt to the enemy."""
-    text: str = 'нанёс урон противнику равный'
     if char_class == 'warrior':
         w_damage: int = 5 + randint(3, 5)
-        return (f'{char_name} {text} {w_damage}')
+        return (f'{char_name} нанёс урон противнику равный {w_damage}')
     if char_class == 'mage':
         m_damage: int = 5 + randint(5, 10)
-        return (f'{char_name} {text} {m_damage}')
+        return (f'{char_name} нанёс урон противнику равный {m_damage}')
     if char_class == 'healer':
         h_damage: int = 5 + randint(-3, -1)
-        return (f'{char_name} {text} {h_damage}')
+        return (f'{char_name} нанёс урон противнику равный {h_damage}')
     return (f'{char_name} не атаковал')
 
 
