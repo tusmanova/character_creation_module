@@ -2,7 +2,8 @@ from random import randint
 from typing import Union
 
 
-def attack(char_name: str, char_class: str) -> str:
+def attack(char_name: str, char_class: Union[str, None]) -> str:
+    """Calculate the damage dealt to the enemy."""
     text: str = 'нанёс урон противнику равный'
     if char_class == 'warrior':
         w_damage: int = 5 + randint(3, 5)
@@ -16,7 +17,8 @@ def attack(char_name: str, char_class: str) -> str:
     return (f'{char_name} не атаковал')
 
 
-def defence(char_name: str, char_class: str) -> str:
+def defence(char_name: str, char_class: Union[str, None]) -> str:
+    """Calculate the damage dealt to the player."""
     if char_class == 'warrior':
         w_damage: int = 10 + randint(5, 10)
         return (f'{char_name} блокировал {w_damage} урона')
@@ -29,7 +31,8 @@ def defence(char_name: str, char_class: str) -> str:
     return (f'{char_name} не был атакован')
 
 
-def special(char_name: str, char_class: str) -> str:
+def special(char_name: str, char_class: Union[str, None]) -> str:
+    """Report Skills Used."""
     text: str = 'применил специальное умение'
     if char_class == 'warrior':
         stamina: int = 80 + 25
@@ -43,7 +46,8 @@ def special(char_name: str, char_class: str) -> str:
     return (f'{char_name} не применил специальное умение')
 
 
-def start_training(char_name: str, char_class: str) -> str:
+def start_training(char_name: str, char_class: Union[str, None]) -> str:
+    """Let the player practice."""
     if char_class == 'warrior':
         print(f'{char_name}, ты Воитель — отличный боец ближнего боя.')
     if char_class == 'mage':
@@ -69,6 +73,7 @@ def start_training(char_name: str, char_class: str) -> str:
 
 
 def choice_char_class() -> Union[str, None]:
+    """Let the player choose a character."""
     approve_choice: Union[str, None] = None
     char_class: Union[str, None] = None
     while approve_choice != 'y':
@@ -91,6 +96,7 @@ def choice_char_class() -> Union[str, None]:
 
 
 def main():
+    """Offer to choose a nickname and character."""
     print('Приветствую тебя, искатель приключений!')
     print('Прежде чем начать игру...')
     char_name: str = input('...назови себя: ')
@@ -98,7 +104,7 @@ def main():
           'Сейчас твоя выносливость — 80, атака — 5 и защита — 10.')
     print('Ты можешь выбрать один из трёх путей силы:')
     print('Воитель, Маг, Лекарь')
-    char_class: str = choice_char_class()
+    char_class: Union[str, None] = choice_char_class()
     print(start_training(char_name, char_class))
 
 
